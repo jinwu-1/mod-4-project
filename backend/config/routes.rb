@@ -2,6 +2,6 @@ Rails.application.routes.draw do
   resources :comments
   resources :posts, only: [:index, :create]
   resources :users, only: [:index, :create]
-  get '/login', to: 'users#login'
+  post '/login', to: 'users#login'
   get '/persist', to: 'users#persist'
 end

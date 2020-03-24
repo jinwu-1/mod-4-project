@@ -1,7 +1,7 @@
-import React from 'react';
-import './App.css';
+import React from 'react';  
 import {Switch, Route, withRouter} from 'react-router-dom'
 import RegisterForm from './components/RegisterForm'
+import LoginForm from './components/LoginForm'
 import NavBar from './components/NavBar'
 import Home from './components/Home'
 import ProfileContainer from './containers/ProfileContainer.jsx'
@@ -20,6 +20,16 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    if (localStorage.token) {
+      fetch("http://localhost:3000/persist", {
+        headers: {
+          "Authorization": `Bearer ${localStorage.token}`
+        }
+      })
+      .then(r => r.json())
+      .then(this.handleResponse)
+    }
+    
     fetch("http://localhost:3000/posts")
       .then(r=> r.json())
       .then((postsArray) => {
@@ -27,6 +37,17 @@ class App extends React.Component {
           posts: postsArray
         })
       })
+  }
+
+  handleResponse = (response) => {
+    if (response.user) {
+      localStorage.token = response.token
+      this.setState(response, () => {
+        this.props.history.push("/profile")
+      })
+    } else {
+      alert(response.error)
+    }
   }
 
   handleRegister = (userInfo) => {
@@ -38,16 +59,27 @@ class App extends React.Component {
       body: JSON.stringify(userInfo)
     })
     .then(r => r.json())
-    .then(results => {
-      this.setState({
-        user: results.user,
-        token: results.token
-      })
+    .then(this.handleResponse)
+  }
+
+  handleLogin = (userInfo) => {
+    fetch("http://localhost:3000/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(userInfo)
     })
+    .then(r => r.json())
+    .then(this.handleResponse)
   }
 
   renderRegisterForm = () => {
     return <RegisterForm handleSubmit={this.handleRegister}/>
+  }
+
+  renderLoginForm = () => {
+    return <LoginForm handleSubmit={this.handleLogin}/>
   }
 
   renderProfile = () => {
@@ -64,7 +96,7 @@ class App extends React.Component {
       <div className="App">
         <NavBar/>
         <Switch>
-          <Route path="/login" render={ this.renderForm } />
+          <Route path="/login" render={ this.renderLoginForm } />
           <Route path="/register" render={ this.renderRegisterForm } />
           <Route path="/profile" render={ this.renderProfile } />
           <Route path="/posts" render={ this.renderPost } />

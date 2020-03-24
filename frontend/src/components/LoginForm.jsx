@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 
-class RegisterForm extends Component {
+class LoginForm extends Component {
   state = {
     username: "",
-    password: "",
-    name: "",
-    avatar: ""
+    password: ""
   }
 
   handleSubmit = (e) => {
@@ -22,22 +20,18 @@ class RegisterForm extends Component {
 
   render() {
    
-    let {username, password, avatar, name} = this.state
+    let {username, password} = this.state
 
     return (
       <form onSubmit={this.handleSubmit}>
-        <h1>Register</h1>
+        <h1>Login</h1>
         <label htmlFor="username">Username:</label>
         <input type="text" autoComplete="off" name="username" value={username} onChange={this.handleChange}/>
         <label htmlFor="password">Password:</label>
         <input type="password" autoComplete="off" name="password" value={password} onChange={this.handleChange}/>
-        <label htmlFor="name">Name:</label>
-        <input type="text" autoComplete="off" name="name" value={name} onChange={this.handleChange}/>
-        <label htmlFor="avatar">Avatar:</label>
-        <input type="text" autoComplete="off" name="avatar" value={avatar} onChange={this.handleChange}/>
         <input type="submit" value="Submit"/>
       </form>
     );
   }
 }
-export default RegisterForm;
+export default LoginForm;
