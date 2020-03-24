@@ -7,7 +7,7 @@ class UsersController < ApplicationController
         render json: {user: UserSerializer.new(@user), token: token}
     end
 
-    def index
+    def index 
         @users = User.all
         render json: @users
     end

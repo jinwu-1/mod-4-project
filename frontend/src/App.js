@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import {Switch, Route, withRouter} from 'react-router-dom'
-import Form from './components/Form'
+import RegisterForm from './components/RegisterForm'
 import NavBar from './components/NavBar'
 import Home from './components/Home'
 import ProfileContainer from './containers/ProfileContainer.jsx'
@@ -39,19 +39,19 @@ class App extends React.Component {
     })
     .then(r => r.json())
     .then(results => {
-      console.log(results)
       this.setState({
-        results
+        user: results.user,
+        token: results.token
       })
     })
   }
 
-  renderForm = () => {
-    return <Form formName="Register Form" handleSubmit={this.handleRegister}/>
+  renderRegisterForm = () => {
+    return <RegisterForm handleSubmit={this.handleRegister}/>
   }
 
   renderProfile = () => {
-    return <ProfileContainer user={this.state.user}/>
+    return <ProfileContainer user={this.state.user} token={this.state.token}/>
   }
 
   renderPost = () => {
@@ -65,7 +65,7 @@ class App extends React.Component {
         <NavBar/>
         <Switch>
           <Route path="/login" render={ this.renderForm } />
-          <Route path="/register" render={ this.renderForm } />
+          <Route path="/register" render={ this.renderRegisterForm } />
           <Route path="/profile" render={ this.renderProfile } />
           <Route path="/posts" render={ this.renderPost } />
           <Route path="/" exact render={() => <Home /> } />
