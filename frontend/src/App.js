@@ -12,6 +12,8 @@ class App extends React.Component {
   state = {
     user: {
       username: "",
+      name: "",
+      avatar: "",
     },
     token: "",
     posts: []
@@ -27,9 +29,8 @@ class App extends React.Component {
       })
   }
 
-  handleLogin = (userInfo) => {
-    console.log(userInfo)
-    fetch("http://localhost:3000/login", {
+  handleRegister = (userInfo) => {
+    fetch("http://localhost:3000/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -37,47 +38,16 @@ class App extends React.Component {
       body: JSON.stringify(userInfo)
     })
     .then(r => r.json())
-    .then((returningUser) => {
-      if (returningUser.id) {
-        this.setState({
-          user: returningUser
-        }, () => {
-          this.props.history.push("/profile")
-        })
-      } else {
-        alert(returningUser.error)
-      }
-    })
-  }
-
-  handleRegister = (userInfo) => {
-    fetch("http://localhost:3000/users", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        username: userInfo.username,
-        password: userInfo.password
-      })
-    })
-    .then(r => r.json())
-    .then((newUser) => {
+    .then(results => {
+      console.log(results)
       this.setState({
-        user: newUser
-      }, () => {
-        this.props.history.push("/profile")
+        results
       })
     })
   }
 
-  renderForm = (routerProps) => {
-    return <h1>Not Working Yet</h1>
-    // if(routerProps.location.pathname === "/login"){
-    //   return <Form formName="Login Form" handleSubmit={this.handleLogin}/>
-    // } else if (routerProps.location.pathname === "/register") {
-    //   return <Form formName="Register Form" handleSubmit={this.handleRegister}/>
-    // }
+  renderForm = () => {
+    return <Form formName="Register Form" handleSubmit={this.handleRegister}/>
   }
 
   renderProfile = () => {
@@ -89,6 +59,7 @@ class App extends React.Component {
   }
 
   render(){
+    console.log(this.state)
     return (
       <div className="App">
         <NavBar/>
