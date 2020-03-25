@@ -1,17 +1,6 @@
 class UsersController < ApplicationController
     before_action :authorized, only: [:persist]
 
-    def persist
-        info = {user_id: @user.id}
-        token = encode_token(info)
-        render json: {user: UserSerializer.new(@user), token: token}
-    end
-
-    def index 
-        @users = User.all
-        render json: @users
-    end
-
     def create
         @user = User.create(user_params)
         if @user.valid?
@@ -21,6 +10,12 @@ class UsersController < ApplicationController
         else
             render json: {error: @user.errors.full_messages}
         end
+    end
+
+    def persist
+        info = {user_id: @user.id}
+        token = encode_token(info)
+        render json: {user: UserSerializer.new(@user), token: token}
     end
 
     def login

@@ -29,7 +29,7 @@ class App extends React.Component {
       .then(r => r.json())
       .then(this.handleResponse)
     }
-    
+
     fetch("http://localhost:3000/posts")
       .then(r=> r.json())
       .then((postsArray) => {
@@ -62,6 +62,23 @@ class App extends React.Component {
     .then(this.handleResponse)
   }
 
+  handleNewPost = (postInfo) => {
+    fetch("http://localhost:3000/posts", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(postInfo)
+    })
+    .then(r => r.json())
+    .then(results => {
+      let newArray = [...this.state.posts, results]
+      this.setState({
+        post: newArray
+      })
+    })
+  }
+
   handleLogin = (userInfo) => {
     fetch("http://localhost:3000/login", {
       method: "POST",
@@ -83,7 +100,7 @@ class App extends React.Component {
   }
 
   renderProfile = () => {
-    return <ProfileContainer user={this.state.user} token={this.state.token}/>
+    return <ProfileContainer user={this.state.user} token={this.state.token} posts={this.state.posts} handleNewPost={this.handleNewPost}/>
   }
 
   renderPost = () => {
@@ -91,7 +108,6 @@ class App extends React.Component {
   }
 
   render(){
-    console.log(this.state)
     return (
       <div className="App">
         <NavBar/>
