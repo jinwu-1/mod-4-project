@@ -15,17 +15,23 @@ class PostsController < ApplicationController
         render json: @post
     end
 
+    def update
+        @post = Post.find(params[:id])
+        @post.update(post_params)
+        render json: @post
+    end
+
     def destroy
         @post = Post.find(params[:id])
         @post.destroy
-        @posts = CartItem.all
+        @posts = Post.all
         render json: @posts
     end
 
     private
 
     def post_params
-        params.permit(:user_id, :img_url, :description)
+        params.permit(:user_id, :img_url, :description, :likes)
     end
 
 end

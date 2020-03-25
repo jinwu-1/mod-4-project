@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2020_03_24_134049) do
   create_table "posts", force: :cascade do |t|
     t.string "img_url"
     t.string "description"
+    t.integer "likes", default: 0
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

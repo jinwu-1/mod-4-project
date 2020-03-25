@@ -8,11 +8,13 @@ class ProfilePost extends React.Component {
     }
 
     render() {
-        let {img_url, description} = this.props.postObject
+
+        let {img_url, description, likes} = this.props.postObject
         let {username} = this.props.postObject.user
         let commentsArrayComponent = this.props.postObject.comments.map(comment => {
             return <Comment key={comment.id} comment={comment} />
         })
+
         return (
             <div className="card">
                 <h3>{username}'s Post</h3>
@@ -21,6 +23,7 @@ class ProfilePost extends React.Component {
                     src={img_url} 
                     alt={username} 
                 />
+                <p>Likes: {likes}</p>
                 <p>Description: {description}</p>
                 <p>Comments: {commentsArrayComponent} </p>
                 <button onClick={this.handleDelete}>Delete</button>

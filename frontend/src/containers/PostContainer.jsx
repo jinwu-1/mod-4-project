@@ -6,7 +6,7 @@ class PostContainer extends Component {
   render() {
 
     const postsArrayComponents = this.props.posts.map(post => {
-      return <Post key={post.id} postObject={post} />
+      return <Post key={post.id} postObject={post} updateLikes={this.props.updateLikes}/>
     })
 
     return (

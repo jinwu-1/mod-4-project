@@ -6,6 +6,7 @@ class ProfileContainer extends Component {
 
 
   render() {
+    
     let {username, name, avatar} = this.props.user
   
     let filteredArray = this.props.posts.filter(post => {

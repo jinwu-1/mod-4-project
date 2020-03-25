@@ -3,18 +3,12 @@ import Comment from './Comments'
 
 class Post extends React.Component {
 
-    state = {
-        likes: 0
-    }
-
     handleLikeClick = () => {
-        this.setState({
-            likes: this.state.likes + 1
-        })
+        this.props.updateLikes(this.props.postObject.id, 1)
     }
 
     render() {
-        let {img_url, description} = this.props.postObject
+        let {img_url, description, likes} = this.props.postObject
         let {username} = this.props.postObject.user
         let commentsArrayComponent = this.props.postObject.comments.map(comment => {
             return <Comment key={comment.id} comment={comment} />
@@ -27,7 +21,7 @@ class Post extends React.Component {
                     src={img_url} 
                     alt={username} 
                 />
-                <p onClick={this.handleLikeClick}>Likes: {this.state.likes}</p>
+                <p onClick={this.handleLikeClick}>Likes: {likes}</p>
                 <p>Description: {description}</p>
                 <p>Comments: {commentsArrayComponent} </p>
             </div>

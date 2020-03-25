@@ -25,9 +25,9 @@ class LoginForm extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <h1>Login</h1>
-        <label htmlFor="username">Username:</label>
+        <label htmlFor="username">username:</label>
         <input type="text" autoComplete="off" name="username" value={username} onChange={this.handleChange}/>
-        <label htmlFor="password">Password:</label>
+        <label htmlFor="password">password:</label>
         <input type="password" autoComplete="off" name="password" value={password} onChange={this.handleChange}/>
         <input type="submit" value="Submit"/>
       </form>

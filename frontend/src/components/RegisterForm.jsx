@@ -27,13 +27,13 @@ class RegisterForm extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <h1>Register</h1>
-        <label htmlFor="username">Username:</label>
+        <label htmlFor="username">username:</label>
         <input type="text" autoComplete="off" name="username" value={username} onChange={this.handleChange}/>
-        <label htmlFor="password">Password:</label>
+        <label htmlFor="password">password:</label>
         <input type="password" autoComplete="off" name="password" value={password} onChange={this.handleChange}/>
-        <label htmlFor="name">Name:</label>
+        <label htmlFor="name">name:</label>
         <input type="text" autoComplete="off" name="name" value={name} onChange={this.handleChange}/>
-        <label htmlFor="avatar">Avatar:</label>
+        <label htmlFor="avatar">avatar_url:</label>
         <input type="text" autoComplete="off" name="avatar" value={avatar} onChange={this.handleChange}/>
         <input type="submit" value="Submit"/>
       </form>

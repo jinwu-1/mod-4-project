@@ -74,7 +74,37 @@ class App extends React.Component {
     .then(results => {
       let newArray = [...this.state.posts, results]
       this.setState({
-        post: newArray
+        posts: newArray
+      })
+    })
+  }
+
+  updateLikes = (id, number) => {
+    let foundObject = this.state.posts.find(post => post.id === id)
+    let newObject = {...foundObject, likes: foundObject.likes + number}
+    console.log(newObject)
+    fetch(`http://localhost:3000/posts/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(newObject)
+    })
+    .then(r => r.json())
+    .then(() => {
+      let theUpdatedArray = this.state.posts.map((post) => {
+        if (post.id === id) {
+          return {
+            ...post,
+            likes: post.likes + number
+          }
+        } else {
+          return post
+        }
+      })
+
+      this.setState({
+        posts: theUpdatedArray
       })
     })
   }
@@ -119,10 +149,11 @@ class App extends React.Component {
   }
 
   renderPost = () => {
-    return <PostContainer posts={this.state.posts}/>
+    return <PostContainer posts={this.state.posts} updateLikes={this.updateLikes}/>
   }
 
   render(){
+    console.log(this.state)
     return (
       <div className="App">
         <NavBar/>
