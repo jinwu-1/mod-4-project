@@ -1,16 +1,10 @@
 import React from 'react'
 import Comment from './Comments'
 
-class Post extends React.Component {
+class ProfilePost extends React.Component {
 
-    state = {
-        likes: 0
-    }
-
-    handleLikeClick = () => {
-        this.setState({
-            likes: this.state.likes + 1
-        })
+    handleDelete = () => {
+        this.props.handleDeletePost(this.props.postObject.id)
     }
 
     render() {
@@ -27,13 +21,13 @@ class Post extends React.Component {
                     src={img_url} 
                     alt={username} 
                 />
-                <p onClick={this.handleLikeClick}>Likes: {this.state.likes}</p>
                 <p>Description: {description}</p>
                 <p>Comments: {commentsArrayComponent} </p>
+                <button onClick={this.handleDelete}>Delete</button>
             </div>
         )
     }
 
 }
 
-export default Post
+export default ProfilePost

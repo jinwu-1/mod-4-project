@@ -15,6 +15,13 @@ class PostsController < ApplicationController
         render json: @post
     end
 
+    def destroy
+        @post = Post.find(params[:id])
+        @post.destroy
+        @posts = CartItem.all
+        render json: @posts
+    end
+
     private
 
     def post_params

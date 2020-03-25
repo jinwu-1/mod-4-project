@@ -79,6 +79,21 @@ class App extends React.Component {
     })
   }
 
+  handleDeletePost = (id) => {
+    fetch(`http://localhost:3000/posts/${id}`, {
+      method: "DELETE"
+    })
+    .then(r => r.json())
+    .then(() => {
+      let filteredArray = this.state.posts.filter(post => {
+        return post.id !== id
+      })
+      this.setState({
+        posts: filteredArray
+      })
+    })
+  }
+
   handleLogin = (userInfo) => {
     fetch("http://localhost:3000/login", {
       method: "POST",
@@ -100,7 +115,7 @@ class App extends React.Component {
   }
 
   renderProfile = () => {
-    return <ProfileContainer user={this.state.user} token={this.state.token} posts={this.state.posts} handleNewPost={this.handleNewPost}/>
+    return <ProfileContainer user={this.state.user} token={this.state.token} posts={this.state.posts} handleNewPost={this.handleNewPost} handleDeletePost={this.handleDeletePost}/>
   }
 
   renderPost = () => {

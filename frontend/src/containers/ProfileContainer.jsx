@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Post from './Post'
+import ProfilePost from './ProfilePost'
 import NewPost from '../components/NewPost'
 
 class ProfileContainer extends Component {
@@ -13,7 +13,7 @@ class ProfileContainer extends Component {
     })
 
     let postComponentArray = filteredArray.map(post => {
-      return <Post key={post.id} postObject={post} />
+      return <ProfilePost key={post.id} postObject={post} handleDeletePost={this.props.handleDeletePost}/>
     })
 
     return (
