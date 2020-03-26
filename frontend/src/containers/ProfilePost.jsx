@@ -16,17 +16,18 @@ class ProfilePost extends React.Component {
         })
 
         return (
-            <div className="card">
-                <h3>{username}'s Post</h3>
+            <div className="post-card">
                 <img 
-                    className="postImage"
+                    className="post-image"
                     src={img_url} 
                     alt={username} 
                 />
-                <p>Likes: {likes}</p>
-                <p>Description: {description}</p>
-                <p>Comments: {commentsArrayComponent} </p>
-                <button onClick={this.handleDelete}>Delete</button>
+                <div className="post-container">
+                    <p>Likes: {likes}</p>
+                    <p>Description: {description}</p>
+                    <p>Comments: {commentsArrayComponent} </p>
+                    <button onClick={this.handleDelete}>Delete</button>
+                </div>
             </div>
         )
     }

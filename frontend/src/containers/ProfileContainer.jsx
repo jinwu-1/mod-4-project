@@ -26,10 +26,12 @@ class ProfileContainer extends Component {
           alt={name} 
         />
         <NewPost 
+          className="new-post-form"
           user={this.props.user}
           handleNewPost={this.props.handleNewPost}
         />
-        {postComponentArray}
+        <br></br>
+          {postComponentArray}
       </div>
     );
   }

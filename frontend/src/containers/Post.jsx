@@ -14,16 +14,20 @@ class Post extends React.Component {
             return <Comment key={comment.id} comment={comment} />
         })
         return (
-            <div className="card">
-                <h3>{username}'s Post</h3>
+            <div className="post-card">
+                <div className="post-header">
+                    <h3>{username}'s Post</h3>
+                </div>
                 <img 
-                    className="postImage"
+                    className="post-image"
                     src={img_url} 
                     alt={username} 
                 />
-                <p onClick={this.handleLikeClick}>Likes: {likes}</p>
-                <p>Description: {description}</p>
-                <p>Comments: {commentsArrayComponent} </p>
+                <div className="post-container">
+                    <p onClick={this.handleLikeClick}>Likes: {likes}</p>
+                    <p>Description: {description}</p>
+                    <p>Comments: {commentsArrayComponent} </p>
+                </div>
             </div>
         )
     }

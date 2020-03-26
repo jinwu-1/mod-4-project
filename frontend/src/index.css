@@ -43,7 +43,6 @@ input, label {
 }
 
 input[type="submit"]{
-  width: 10rem;
   margin-top: 2rem;
   height: 1.5rem;
 }
@@ -84,4 +83,40 @@ ul.nav li a {
 
 ul.nav li a:hover {
   background-color: #111;
+}
+
+.home-image {
+  width: 50%
+}
+
+.avatar {
+  border-radius: 50%;
+}
+
+.post-card {
+  margin: auto;
+  width: 50%;
+  background-color: #BEBEBE;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.post-image {
+  width: 100%;
+}
+
+.post-container {
+  background-color: white;
+  text-align: center;
+  padding: 10px 15px;
+}
+
+.post-header {
+  background: red;
+  background: -webkit-linear-gradient(left, orange , yellow, green, cyan, blue, violet);
+  background: -o-linear-gradient(right, orange, yellow, green, cyan, blue, violet);
+  background: -moz-linear-gradient(right, orange, yellow, green, cyan, blue, violet);
+  background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 2rem;
 }
