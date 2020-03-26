@@ -111,12 +111,12 @@ ul.nav li a:hover {
 }
 
 .post-header {
-  background: red;
-  background: -webkit-linear-gradient(left, orange , yellow, green, cyan, blue, violet);
-  background: -o-linear-gradient(right, orange, yellow, green, cyan, blue, violet);
-  background: -moz-linear-gradient(right, orange, yellow, green, cyan, blue, violet);
-  background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-size: 2rem;
+  background: white;
+  padding: 1px;
+  margin-top: 10px;
+}
+
+li {
+  margin: 0;
+  list-style-type: none
 }
