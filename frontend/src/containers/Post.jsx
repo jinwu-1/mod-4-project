@@ -1,5 +1,6 @@
 import React from 'react'
 import Comment from './Comments'
+import { Button, Icon, Label } from 'semantic-ui-react'
 
 class Post extends React.Component {
 
@@ -16,7 +17,7 @@ class Post extends React.Component {
         return (
             <div className="post-card">
                 <div className="post-header">
-                    <h3>{username}'s Post</h3>
+                    <h2>{username}'s post</h2>
                 </div>
                 <img 
                     className="post-image"
@@ -24,9 +25,27 @@ class Post extends React.Component {
                     alt={username} 
                 />
                 <div className="post-container">
-                    <strong onClick={this.handleLikeClick}>Likes: {likes}</strong>
-                    <h5>Description: {description}</h5>
-                    <p>Comments: {commentsArrayComponent} </p>
+                    <Button as='div' labelPosition='right' onClick={this.handleLikeClick}>
+                        <Button color='red'>
+                            <Icon name='heart' />
+                            Like
+                        </Button>
+                        <Label as='a' basic color='red' basic pointing='left'>
+                            {likes}
+                        </Label>
+                    </Button>
+                    <div>
+                        <br></br>
+                        <strong>Description: </strong> 
+                        {description}
+                    </div>
+                    <br></br>
+                    <div>
+                        <h5>
+                        Comments: 
+                        </h5>
+                        {commentsArrayComponent} 
+                    </div>
                 </div>
             </div>
         )

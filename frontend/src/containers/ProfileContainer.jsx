@@ -19,7 +19,7 @@ class ProfileContainer extends Component {
 
     return (
       <div>
-        <h2>{username}'s Profile</h2>
+        <h2>{username}</h2>
         <img 
           className="avatar"
           src={avatar} 

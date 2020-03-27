@@ -1,5 +1,6 @@
 import React from 'react'
 import Comment from './Comments'
+import { Button, Icon, Label } from 'semantic-ui-react'
 
 class ProfilePost extends React.Component {
 
@@ -23,10 +24,35 @@ class ProfilePost extends React.Component {
                     alt={username} 
                 />
                 <div className="post-container">
-                    <p>Likes: {likes}</p>
-                    <p>Description: {description}</p>
-                    <p>Comments: {commentsArrayComponent} </p>
-                    <button onClick={this.handleDelete}>Delete</button>
+                    <Button as='div' labelPosition='right'>
+                        <Button color='red'>
+                            <Icon name='heart' />
+                            Like
+                        </Button>
+                        <Label as='a' basic color='red' basic pointing='left'>
+                            {likes}
+                        </Label>
+                    </Button>
+                    <div>
+                        <br></br>
+                        <strong>Description: </strong> 
+                        {description}
+                    </div>
+                    <br></br>
+                    <div>
+                        <h5>
+                        Comments: 
+                        </h5>
+                        {commentsArrayComponent} 
+                    </div>
+                    <br></br>
+                    <Button
+                        onClick={this.handleDelete}
+                        color='red'
+                        content='Remove'
+                        icon='x'
+                        labelPosition='left'
+                    />
                 </div>
             </div>
         )

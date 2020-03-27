@@ -123,3 +123,10 @@ li {
   margin: 0;
   list-style-type: none
 }
+
+.form {
+  padding-top: 10px;
+  margin: auto;
+  width: 50%;
+  text-align: center;
+}

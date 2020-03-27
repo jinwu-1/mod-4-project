@@ -8,4 +8,8 @@ class Comment < ApplicationRecord
     self.user.username
   end
 
+  def avatar
+    self.user.avatar
+  end
+
 end
