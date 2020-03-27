@@ -17,43 +17,46 @@ class ProfilePost extends React.Component {
         })
 
         return (
-            <div className="post-card">
-                <img 
-                    className="post-image"
-                    src={img_url} 
-                    alt={username} 
-                />
-                <div className="post-container">
-                    <Button as='div' labelPosition='right'>
-                        <Button color='red'>
-                            <Icon name='heart' />
-                            Like
-                        </Button>
-                        <Label as='a' basic color='red' basic pointing='left'>
-                            {likes}
-                        </Label>
-                    </Button>
-                    <div>
-                        <br></br>
-                        <strong>Description: </strong> 
-                        {description}
-                    </div>
-                    <br></br>
-                    <div>
-                        <h5>
-                        Comments: 
-                        </h5>
-                        {commentsArrayComponent} 
-                    </div>
-                    <br></br>
-                    <Button
-                        onClick={this.handleDelete}
-                        color='red'
-                        content='Remove'
-                        icon='x'
-                        labelPosition='left'
+            <div>
+                <div className="post-card">
+                    <img 
+                        className="post-image"
+                        src={img_url} 
+                        alt={username} 
                     />
+                    <div className="post-container">
+                        <Button as='div' labelPosition='right'>
+                            <Button color='red'>
+                                <Icon name='heart' />
+                                Like
+                            </Button>
+                            <Label as='a' basic color='red' basic pointing='left'>
+                                {likes}
+                            </Label>
+                        </Button>
+                        <div>
+                            <br></br>
+                            <strong>Description: </strong> 
+                            {description}
+                        </div>
+                        <br></br>
+                        <div>
+                            <h5>
+                            Comments: 
+                            </h5>
+                            {commentsArrayComponent} 
+                        </div>
+                        <br></br>
+                        <Button
+                            onClick={this.handleDelete}
+                            color='red'
+                            content='Remove'
+                            icon='x'
+                            labelPosition='left'
+                        />
+                    </div>
                 </div>
+                <br></br>
             </div>
         )
     }
