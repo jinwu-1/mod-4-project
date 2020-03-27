@@ -24,8 +24,8 @@ class Post extends React.Component {
                     alt={username} 
                 />
                 <div className="post-container">
-                    <p onClick={this.handleLikeClick}>Likes: {likes}</p>
-                    <p>Description: {description}</p>
+                    <strong onClick={this.handleLikeClick}>Likes: {likes}</strong>
+                    <h5>Description: {description}</h5>
                     <p>Comments: {commentsArrayComponent} </p>
                 </div>
             </div>
